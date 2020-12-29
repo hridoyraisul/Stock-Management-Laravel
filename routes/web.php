@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //stock controller
-Route::get('/', 'StockController@view')->name('stock');
+Route::get('/', [StockController::class,'view'])->name('stock');
 Route::post('/save-purchase-old-invoice', 'StockController@save_purchaseOLD');
 Route::post('/save-purchase', 'StockController@save_purchase')->name('save_purchase');
 Route::get('/add-stock', 'StockController@index')->name('StockPurchase-purchase');
